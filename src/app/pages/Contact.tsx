@@ -8,21 +8,22 @@ import { Textarea } from '../components/ui/textarea';
 import { Button } from '../components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
 import { toast } from 'sonner';
+import { PageHero } from '../components/PageHero';
 
 const contactInfo = [
-  { icon: Phone, label: 'Phone', value: '+1 (234) 567-890', link: 'tel:+1234567890' },
-  { icon: Mail, label: 'Email', value: 'info@university.edu', link: 'mailto:info@university.edu' },
-  { icon: MapPin, label: 'Address', value: '123 University Avenue, Education City, EC 12345', link: null },
-  { icon: Clock, label: 'Office Hours', value: 'Mon-Fri: 9:00 AM - 5:00 PM', link: null },
+  { icon: Phone, label: 'Phone', value: '+91 80 2860 7999', link: 'tel:+918028607999' },
+  { icon: Mail, label: 'Email', value: 'principal@rnsit.ac.in', link: 'mailto:principal@rnsit.ac.in' },
+  { icon: MapPin, label: 'Address', value: 'Dr. Vishnuvardhan Road, R.R. Nagar, Bengaluru, Karnataka – 560 098', link: null },
+  { icon: Clock, label: 'Office Hours', value: 'Mon–Sat: 9:00 AM – 5:00 PM', link: null },
 ];
 
 const departments = [
-  { name: 'Admissions Office', email: 'admissions@university.edu', phone: '+1 (234) 567-891' },
-  { name: 'Academic Affairs', email: 'academics@university.edu', phone: '+1 (234) 567-892' },
-  { name: 'Student Services', email: 'studentservices@university.edu', phone: '+1 (234) 567-893' },
-  { name: 'Financial Aid', email: 'finaid@university.edu', phone: '+1 (234) 567-894' },
-  { name: 'International Office', email: 'international@university.edu', phone: '+1 (234) 567-895' },
-  { name: 'Career Services', email: 'careers@university.edu', phone: '+1 (234) 567-896' },
+  { name: 'Admissions Office', email: 'admissions@rnsit.ac.in', phone: '+91 80 2860 7999' },
+  { name: 'Academic Affairs', email: 'academics@rnsit.ac.in', phone: '+91 80 2860 7998' },
+  { name: 'Student Services', email: 'studentservices@rnsit.ac.in', phone: '+91 80 2860 7997' },
+  { name: 'Examination Cell', email: 'examcell@rnsit.ac.in', phone: '+91 80 2860 7996' },
+  { name: 'Placement Cell', email: 'placements@rnsit.ac.in', phone: '+91 80 2860 7995' },
+  { name: 'Research & Development', email: 'research@rnsit.ac.in', phone: '+91 80 2860 7994' },
 ];
 
 const faqs = [
@@ -113,53 +114,33 @@ export default function Contact() {
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative h-80 flex items-center justify-center bg-gradient-to-r from-teal-600 to-cyan-600 dark:from-teal-800 dark:to-cyan-800">
-        <div className="relative z-10 text-center text-white px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <MessageSquare className="w-16 h-16 mx-auto mb-4" />
-            <h1 className="text-5xl md:text-6xl font-bold mb-4">Contact Us</h1>
-            <p className="text-xl text-teal-100">
-              We're here to help answer your questions
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        title="Contact Us"
+        subtitle="We're here to help answer your questions"
+        gradient="bg-gradient-to-r from-teal-700 via-cyan-600 to-blue-700"
+        icon={<MessageSquare className="w-10 h-10 text-white" />}
+        badge="Mon–Sat · 9:00 AM – 5:00 PM"
+      />
 
       {/* Contact Info Cards */}
-      <section className="py-12 -mt-16 relative z-10">
+      <section className="py-12 -mt-8 relative z-10">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactInfo.map((info, idx) => (
-              <motion.div
-                key={info.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.1 }}
-              >
-                <Card className="hover:shadow-xl transition h-full">
-                  <CardContent className="p-6 text-center">
-                    <div className="w-12 h-12 bg-teal-100 dark:bg-teal-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <info.icon className="w-6 h-6 text-teal-600" />
-                    </div>
-                    <h3 className="font-semibold mb-2 text-gray-900 dark:text-white">
-                      {info.label}
-                    </h3>
-                    {info.link ? (
-                      <a
-                        href={info.link}
-                        className="text-sm text-gray-600 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition"
-                      >
-                        {info.value}
-                      </a>
-                    ) : (
-                      <p className="text-sm text-gray-600 dark:text-gray-400">{info.value}</p>
-                    )}
-                  </CardContent>
-                </Card>
+              <motion.div key={info.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.1 }} className="hover-lift">
+                <div className="rounded-3xl bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-6 text-center shadow-lg h-full">
+                  <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-md">
+                    <info.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="font-semibold mb-2 text-gray-900 dark:text-white">{info.label}</h3>
+                  {info.link ? (
+                    <a href={info.link} className="text-sm text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition">
+                      {info.value}
+                    </a>
+                  ) : (
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{info.value}</p>
+                  )}
+                </div>
               </motion.div>
             ))}
           </div>
@@ -259,14 +240,14 @@ export default function Contact() {
               <Card className="overflow-hidden">
                 <div className="h-64 bg-gray-200 dark:bg-gray-700 relative">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1841374067776!2d-73.98823492346679!3d40.75797733538546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+                    src="https://maps.google.com/maps?q=RNS+Institute+of+Technology,+Dr.+Vishnuvardhan+Road,+RR+Nagar,+Bengaluru,+Karnataka+560098&output=embed&z=16"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="University Location"
+                    title="RNS Institute of Technology, Bangalore"
                   />
                 </div>
               </Card>

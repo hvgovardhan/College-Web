@@ -36,3 +36,34 @@ html {
 .dark ::-webkit-scrollbar-thumb:hover {
   background: #6b7280;
 }
+
+/* Section label accent */
+.section-label {
+  @apply text-blue-600 dark:text-blue-400 font-semibold text-xs uppercase tracking-[0.2em];
+}
+
+/* Decorative dot grid background */
+.bg-dot-grid {
+  background-image: radial-gradient(circle, rgba(99,102,241,0.15) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  @apply bg-white/70 dark:bg-gray-900/70 backdrop-blur-md border border-white/50 dark:border-gray-700/50 shadow-xl;
+}
+
+/* Gradient text */
+.gradient-text {
+  @apply bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent;
+}
+
+/* Hover lift */
+.hover-lift {
+  @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl;
+}
+
+/* Section divider wave */
+.wave-divider {
+  @apply absolute bottom-0 left-0 right-0 overflow-hidden leading-none;
+}

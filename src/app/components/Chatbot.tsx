@@ -16,7 +16,7 @@ const botResponses: Record<string, string> = {
   "apply": "You can apply through our Admissions page. The application process includes submitting your documents, entrance exam scores, and an online application form.",
   "requirements": "Admission requirements vary by program. Generally, you need qualifying exam scores, academic transcripts, recommendation letters, and a statement of purpose.",
   "campus": "Our campus offers state-of-the-art facilities, diverse clubs, sports complexes, modern hostels, and a vibrant student community. Check our Campus Life section!",
-  "default": "Thank you for your question! For detailed information, please visit our website or contact our admissions office at admissions@university.edu",
+  "default": "Thank you for your question! For detailed information, please visit our website or contact our admissions office at admissions@rnsit.ac.in",
 };
 
 export function Chatbot() {

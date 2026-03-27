@@ -283,15 +283,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <ul className="space-y-3 text-sm">
                 <li className="flex items-start gap-2">
                   <MapPin className="w-4 h-4 mt-1 flex-shrink-0" />
-                  <span>123 University Avenue<br />Education City, EC 12345</span>
+                  <span>Dr. Vishnuvardhan Road, R.R. Nagar,<br />Bengaluru, Karnataka – 560 098</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Phone className="w-4 h-4" />
-                  <span>+1 (234) 567-890</span>
+                  <span>+91 80 2860 7999</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4" />
-                  <span>info@university.edu</span>
+                  <span>info@rnsit.ac.in</span>
                 </li>
               </ul>
             </div>

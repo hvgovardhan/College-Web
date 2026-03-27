@@ -6,6 +6,7 @@ import { Badge } from '../components/ui/badge';
 import { Input } from '../components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { PageHero } from '../components/PageHero';
 
 const newsItems = [
   {
@@ -100,21 +101,13 @@ export default function News() {
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative h-80 flex items-center justify-center bg-gradient-to-r from-orange-600 to-red-600 dark:from-orange-800 dark:to-red-800">
-        <div className="relative z-10 text-center text-white px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <Calendar className="w-16 h-16 mx-auto mb-4" />
-            <h1 className="text-5xl md:text-6xl font-bold mb-4">News & Announcements</h1>
-            <p className="text-xl text-orange-100">
-              Stay updated with the latest from our campus
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        title="News & Announcements"
+        subtitle="Stay updated with the latest from our campus"
+        gradient="bg-gradient-to-r from-orange-700 via-red-600 to-rose-700"
+        icon={<Calendar className="w-10 h-10 text-white" />}
+        badge="Latest Updates · Events · Achievements"
+      />
 
       {/* Search and Filter */}
       <section className="py-8 bg-gray-50 dark:bg-gray-900 sticky top-[73px] z-40 border-b border-gray-200 dark:border-gray-800">

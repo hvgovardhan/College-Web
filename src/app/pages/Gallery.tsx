@@ -5,6 +5,7 @@ import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { PageHero } from '../components/PageHero';
 
 const images = [
   { id: 1, src: 'https://images.unsplash.com/photo-1760131556605-7f2e63d00385?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1bml2ZXJzaXR5JTIwY2FtcHVzJTIwbW9kZXJuJTIwYnVpbGRpbmd8ZW58MXx8fHwxNzc0NTMzNDk3fDA&ixlib=rb-4.1.0&q=80&w=1080', category: 'Campus', title: 'Main Campus Building' },
@@ -40,21 +41,13 @@ export default function Gallery() {
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative h-80 flex items-center justify-center bg-gradient-to-r from-pink-600 to-purple-600 dark:from-pink-800 dark:to-purple-800">
-        <div className="relative z-10 text-center text-white px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <ImageIcon className="w-16 h-16 mx-auto mb-4" />
-            <h1 className="text-5xl md:text-6xl font-bold mb-4">Gallery</h1>
-            <p className="text-xl text-pink-100">
-              Explore campus life through our lens
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        title="Gallery"
+        subtitle="Explore campus life through our lens"
+        gradient="bg-gradient-to-r from-pink-700 via-purple-600 to-indigo-700"
+        icon={<ImageIcon className="w-10 h-10 text-white" />}
+        badge="Campus · Events · Research · Sports"
+      />
 
       {/* Tabs */}
       <section className="py-12">

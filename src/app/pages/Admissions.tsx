@@ -9,6 +9,7 @@ import { Label } from '../components/ui/label';
 import { Textarea } from '../components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { toast } from 'sonner';
+import { PageHero } from '../components/PageHero';
 
 const admissionProcess = [
   { step: 1, title: 'Online Application', description: 'Fill out the online application form with your details' },
@@ -75,23 +76,12 @@ export default function Admissions() {
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative h-96 flex items-center justify-center bg-gradient-to-r from-green-600 to-blue-600 dark:from-green-800 dark:to-blue-800">
-        <div className="relative z-10 text-center text-white px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <h1 className="text-5xl md:text-6xl font-bold mb-4">Admissions</h1>
-            <p className="text-xl text-green-100 mb-6">
-              Begin your journey to excellence
-            </p>
-            <Badge className="bg-white/20 text-white border-white">
-              Applications Open for 2026
-            </Badge>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        title="Admissions"
+        subtitle="Begin your journey to excellence at RNSIT"
+        gradient="bg-gradient-to-r from-green-700 via-teal-600 to-blue-700"
+        badge="Applications Open for 2026"
+      />
 
       {/* Admission Process */}
       <section className="py-20">
@@ -357,7 +347,7 @@ export default function Admissions() {
                 <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
                   Download PDF
                 </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                <Button size="lg" variant="outline" className="border-white text-white bg-black/20 hover:bg-white hover:text-blue-900">
                   Request Physical Copy
                 </Button>
               </div>

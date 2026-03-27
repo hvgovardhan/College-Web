@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Briefcase, TrendingUp, Award, Building2, Users } from 'lucide-react';
+import { Briefcase, TrendingUp, Award, Building2, Users, ArrowRight } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { PageHero } from '../components/PageHero';
 
 const placementData = [
   { year: '2022', students: 850, avgPackage: 12 },
@@ -30,100 +30,72 @@ const topRecruiters = [
 
 const testimonials = [
   {
-    name: 'Alex Thompson',
-    company: 'Google',
+    name: 'Arjun Mehta',
+    company: 'Infosys',
     role: 'Software Engineer',
-    package: '$150,000',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400',
-    quote: 'The placement cell provided excellent guidance throughout the process.',
+    package: '₹12 LPA',
+    initials: 'AM',
+    quote: 'The placement cell provided excellent guidance throughout the process. Mock interviews were very helpful.',
   },
   {
     name: 'Priya Sharma',
-    company: 'Goldman Sachs',
-    role: 'Financial Analyst',
-    package: '$120,000',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400',
-    quote: 'Mock interviews and resume workshops were invaluable.',
+    company: 'Wipro Technologies',
+    role: 'Systems Analyst',
+    package: '₹10 LPA',
+    initials: 'PS',
+    quote: 'Resume workshops and aptitude training gave me the edge I needed to crack my dream company.',
   },
   {
-    name: 'David Chen',
-    company: 'McKinsey & Company',
-    role: 'Management Consultant',
-    package: '$140,000',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400',
-    quote: 'The career services team exceeded all my expectations.',
+    name: 'Rohan Kulkarni',
+    company: 'TCS',
+    role: 'Associate Consultant',
+    package: '₹11 LPA',
+    initials: 'RK',
+    quote: 'The career services team was incredibly supportive right from day one of the placement season.',
   },
 ];
 
 export default function Placements() {
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative h-96 flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1762341118920-0b65e8d88aa2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMG9mZmljZXxlbnwxfHx8fDE3NzQ1ODA5NjV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-            alt="Placements"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/90 to-teal-900/80 dark:from-emerald-950/95 dark:to-teal-950/90" />
-        </div>
-        <div className="relative z-10 text-center text-white px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <Briefcase className="w-16 h-16 mx-auto mb-4" />
-            <h1 className="text-5xl md:text-6xl font-bold mb-4">Placements & Careers</h1>
-            <p className="text-xl text-emerald-100">
-              Launching successful careers worldwide
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        title="Placements & Careers"
+        subtitle="Launching successful careers at top companies across India and the world"
+        image="https://images.unsplash.com/photo-1762341118920-0b65e8d88aa2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMG9mZmljZXxlbnwxfHx8fDE3NzQ1ODA5NjV8MA&ixlib=rb-4.1.0&q=80&w=1080"
+        gradient="bg-gradient-to-r from-emerald-900/90 via-teal-800/80 to-emerald-900/70"
+        icon={<Briefcase className="w-10 h-10 text-white" />}
+        badge="95% Placement Rate · 250+ Recruiters"
+      />
 
       {/* Key Statistics */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Placement Highlights 2026</h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Outstanding placement records year after year
-            </p>
+      <section className="py-20 bg-white dark:bg-gray-950 relative overflow-hidden">
+        <div className="absolute inset-0 bg-dot-grid opacity-30" />
+        <div className="relative max-w-7xl mx-auto px-4">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+            <span className="section-label">Results</span>
+            <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white mt-2 mb-3">Placement Highlights 2026</h2>
+            <p className="text-lg text-gray-500 dark:text-gray-400 max-w-xl mx-auto">Outstanding placement records year after year</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[
-              { label: 'Placement Rate', value: '95%', icon: TrendingUp, color: 'emerald' },
-              { label: 'Average Package', value: '$85K', icon: Award, color: 'blue' },
-              { label: 'Highest Package', value: '$200K', icon: TrendingUp, color: 'purple' },
-              { label: 'Companies Visited', value: '250+', icon: Building2, color: 'orange' },
+              { label: 'Placement Rate', value: '95%', icon: TrendingUp, gradient: 'from-emerald-500 to-teal-600' },
+              { label: 'Average Package', value: '₹8.5 LPA', icon: Award, gradient: 'from-blue-500 to-indigo-600' },
+              { label: 'Highest Package', value: '₹42 LPA', icon: TrendingUp, gradient: 'from-purple-500 to-pink-500' },
+              { label: 'Companies Visited', value: '250+', icon: Building2, gradient: 'from-orange-500 to-amber-500' },
             ].map((stat, idx) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-              >
-                <Card className="text-center hover:shadow-xl transition">
-                  <CardContent className="pt-6 pb-6">
-                    <div className={`w-12 h-12 bg-${stat.color}-100 dark:bg-${stat.color}-900 rounded-full flex items-center justify-center mx-auto mb-3`}>
-                      <stat.icon className={`w-6 h-6 text-${stat.color}-600`} />
-                    </div>
-                    <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
-                      {stat.value}
-                    </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
-                      {stat.label}
-                    </div>
-                  </CardContent>
-                </Card>
+              <motion.div key={stat.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} className="hover-lift">
+                <div className="rounded-3xl bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-6 text-center shadow-lg">
+                  <div className={`w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${stat.gradient} flex items-center justify-center shadow-md`}>
+                    <stat.icon className="w-7 h-7 text-white" />
+                  </div>
+                  <div className="text-3xl font-extrabold text-gray-900 dark:text-white mb-1">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-gray-500 dark:text-gray-400 font-medium">
+                    {stat.label}
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -131,18 +103,12 @@ export default function Placements() {
       </section>
 
       {/* Placement Trends */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
+      <section className="py-24 bg-gradient-to-br from-slate-50 via-emerald-50/30 to-teal-50/40 dark:from-gray-900 dark:to-gray-900">
         <div className="max-w-7xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Placement Trends</h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Growth in placements and packages over the years
-            </p>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+            <span className="section-label">Analytics</span>
+            <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white mt-2 mb-3">Placement Trends</h2>
+            <p className="text-lg text-gray-500 dark:text-gray-400 max-w-xl mx-auto">Growth in placements and packages over the years</p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -210,28 +176,15 @@ export default function Placements() {
             </p>
           </motion.div>
 
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="flex flex-wrap justify-center gap-4">
             {topRecruiters.map((company, idx) => (
-              <motion.div
-                key={company}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.05 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <Card className="w-40 hover:shadow-lg transition cursor-pointer">
-                  <CardContent className="p-6 text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full mx-auto mb-3 flex items-center justify-center">
-                      <span className="text-white font-bold text-xl">
-                        {company.charAt(0)}
-                      </span>
-                    </div>
-                    <p className="font-semibold text-gray-900 dark:text-white text-sm">
-                      {company}
-                    </p>
-                  </CardContent>
-                </Card>
+              <motion.div key={company} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: idx * 0.04 }} whileHover={{ scale: 1.05 }}>
+                <div className="rounded-2xl bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 px-5 py-3 shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold text-sm">{company.charAt(0)}</span>
+                  </div>
+                  <span className="font-semibold text-gray-900 dark:text-white text-sm">{company}</span>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -239,59 +192,33 @@ export default function Placements() {
       </section>
 
       {/* Student Testimonials */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
+      <section className="py-24 bg-gradient-to-br from-slate-50 via-emerald-50/20 to-teal-50/30 dark:from-gray-900 dark:to-gray-900">
         <div className="max-w-7xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Success Stories</h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Hear from our students about their placement journey
-            </p>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+            <span className="section-label">Alumni Voices</span>
+            <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white mt-2 mb-3">Success Stories</h2>
+            <p className="text-lg text-gray-500 dark:text-gray-400 max-w-xl mx-auto">Hear from our students about their placement journey</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-              >
-                <Card className="h-full">
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-4 mb-4">
-                      <ImageWithFallback
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="w-16 h-16 rounded-full object-cover"
-                      />
-                      <div>
-                        <h3 className="font-bold text-gray-900 dark:text-white">
-                          {testimonial.name}
-                        </h3>
-                        <p className="text-sm text-emerald-600 dark:text-emerald-400">
-                          {testimonial.role}
-                        </p>
-                      </div>
+              <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} className="hover-lift">
+                <div className="rounded-3xl bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-6 shadow-lg h-full">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-14 h-14 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center flex-shrink-0">
+                      <span className="text-slate-600 dark:text-slate-300 font-bold text-lg">{testimonial.initials}</span>
                     </div>
-                    <div className="mb-4">
-                      <Badge className="bg-emerald-100 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-300">
-                        {testimonial.company}
-                      </Badge>
-                      <Badge variant="outline" className="ml-2">
-                        {testimonial.package}
-                      </Badge>
+                    <div>
+                      <h3 className="font-bold text-gray-900 dark:text-white text-sm">{testimonial.name}</h3>
+                      <p className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">{testimonial.role}</p>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-400 italic">
-                      "{testimonial.quote}"
-                    </p>
-                  </CardContent>
-                </Card>
+                  </div>
+                  <div className="flex gap-2 mb-4">
+                    <span className="text-xs px-2 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 font-semibold">{testimonial.company}</span>
+                    <span className="text-xs px-2 py-1 rounded-full bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 font-semibold">{testimonial.package}</span>
+                  </div>
+                  <p className="text-gray-500 dark:text-gray-400 italic text-sm leading-relaxed">"{testimonial.quote}"</p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -299,18 +226,13 @@ export default function Placements() {
       </section>
 
       {/* Placement Services */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Career Services</h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Comprehensive support for your career journey
-            </p>
+      <section className="py-24 bg-white dark:bg-gray-950 relative overflow-hidden">
+        <div className="absolute inset-0 bg-dot-grid opacity-30" />
+        <div className="relative max-w-7xl mx-auto px-4">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+            <span className="section-label">Support</span>
+            <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white mt-2 mb-3">Career Services</h2>
+            <p className="text-lg text-gray-500 dark:text-gray-400 max-w-xl mx-auto">Comprehensive support for your career journey</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
