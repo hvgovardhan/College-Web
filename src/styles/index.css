@@ -2,68 +2,112 @@
 @import './tailwind.css';
 @import './theme.css';
 
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
-/* Improve scrollbar styling */
-::-webkit-scrollbar {
-  width: 10px;
-}
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f0f4ff; }
+.dark ::-webkit-scrollbar-track { background: #0f1829; }
+::-webkit-scrollbar-thumb { background: #93c5fd; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+.dark ::-webkit-scrollbar-thumb { background: #1e3a5f; }
+.dark ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
 
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-.dark ::-webkit-scrollbar-track {
-  background: #1f2937;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background: #4b5563;
-}
-
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: #6b7280;
-}
-
-/* Section label accent */
+/* ── Section label ── */
 .section-label {
-  @apply text-blue-600 dark:text-blue-400 font-semibold text-xs uppercase tracking-[0.2em];
+  @apply text-blue-600 dark:text-blue-400 font-bold text-[11px] uppercase tracking-[0.25em];
 }
 
-/* Decorative dot grid background */
+/* ── Section backgrounds ── */
+.section-light {
+  @apply bg-white dark:bg-[#0a1120];
+}
+.section-soft {
+  background: linear-gradient(135deg, #f0f5ff 0%, #f5f0ff 50%, #f0f8ff 100%);
+}
+.dark .section-soft {
+  background: linear-gradient(135deg, #0d1a2e 0%, #110d2a 50%, #0a1a2e 100%);
+}
+.section-muted {
+  @apply bg-slate-50 dark:bg-[#0c1525];
+}
+
+/* ── Dot grid ── */
 .bg-dot-grid {
-  background-image: radial-gradient(circle, rgba(99,102,241,0.15) 1px, transparent 1px);
-  background-size: 28px 28px;
+  background-image: radial-gradient(circle, rgba(59,130,246,0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.bg-dot-grid-dark {
+  background-image: radial-gradient(circle, rgba(99,102,241,0.2) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-/* Glassmorphism card */
-.glass-card {
-  @apply bg-white/70 dark:bg-gray-900/70 backdrop-blur-md border border-white/50 dark:border-gray-700/50 shadow-xl;
+/* ── Icon containers ── */
+.icon-box {
+  @apply w-12 h-12 rounded-2xl flex items-center justify-center shadow-md flex-shrink-0;
+}
+.icon-box-lg {
+  @apply w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0;
+}
+.icon-glow-blue  { box-shadow: 0 4px 20px rgba(59,130,246,0.35); }
+.icon-glow-purple { box-shadow: 0 4px 20px rgba(139,92,246,0.35); }
+.icon-glow-green  { box-shadow: 0 4px 20px rgba(16,185,129,0.35); }
+.icon-glow-orange { box-shadow: 0 4px 20px rgba(245,158,11,0.35); }
+
+/* ── Cards ── */
+.card-base {
+  @apply rounded-3xl bg-white dark:bg-[#0f1e35] border border-blue-100/60 dark:border-blue-900/30 shadow-sm;
+}
+.card-hover {
+  @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/10 dark:hover:shadow-blue-900/30;
+}
+.card-accent-top {
+  @apply relative overflow-hidden;
+}
+.card-accent-top::before {
+  content: '';
+  @apply absolute inset-x-0 top-0 h-[3px] rounded-t-3xl;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
 }
 
-/* Gradient text */
+/* ── Gradient text ── */
 .gradient-text {
   @apply bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent;
 }
+.gradient-text-warm {
+  @apply bg-gradient-to-r from-orange-500 to-rose-500 bg-clip-text text-transparent;
+}
+.gradient-text-green {
+  @apply bg-gradient-to-r from-emerald-500 to-teal-600 bg-clip-text text-transparent;
+}
 
-/* Hover lift */
+/* ── Hover lift ── */
 .hover-lift {
-  @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl;
+  @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10;
 }
 
-/* Section divider wave */
-.wave-divider {
-  @apply absolute bottom-0 left-0 right-0 overflow-hidden leading-none;
+/* ── Divider ── */
+.section-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(59,130,246,0.3), rgba(139,92,246,0.3), transparent);
 }
+
+/* ── Glass card ── */
+.glass-card {
+  @apply bg-white/80 dark:bg-[#0f1e35]/80 backdrop-blur-md border border-white/60 dark:border-blue-900/30 shadow-xl;
+}
+
+/* ── Stat number ── */
+.stat-number {
+  @apply text-4xl font-black tabular-nums;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Badge pill ── */
+.badge-blue  { @apply text-xs font-bold px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50; }
+.badge-purple { @apply text-xs font-bold px-3 py-1 rounded-full bg-purple-50 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 border border-purple-100 dark:border-purple-900/50; }
+.badge-green  { @apply text-xs font-bold px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-900/50; }
+.badge-orange { @apply text-xs font-bold px-3 py-1 rounded-full bg-orange-50 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 border border-orange-100 dark:border-orange-900/50; }

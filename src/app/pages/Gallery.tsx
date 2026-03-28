@@ -44,7 +44,8 @@ export default function Gallery() {
       <PageHero
         title="Gallery"
         subtitle="Explore campus life through our lens"
-        gradient="bg-gradient-to-r from-pink-700 via-purple-600 to-indigo-700"
+        image="https://images.unsplash.com/photo-1565902608227-5b6c311817a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080"
+        gradient="bg-gradient-to-r from-pink-900/85 via-purple-800/75 to-indigo-900/80"
         icon={<ImageIcon className="w-10 h-10 text-white" />}
         badge="Campus · Events · Research · Sports"
       />

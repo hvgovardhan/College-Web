@@ -117,7 +117,8 @@ export default function Contact() {
       <PageHero
         title="Contact Us"
         subtitle="We're here to help answer your questions"
-        gradient="bg-gradient-to-r from-teal-700 via-cyan-600 to-blue-700"
+        image="https://images.unsplash.com/photo-1762341118920-0b65e8d88aa2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080"
+        gradient="bg-gradient-to-r from-teal-900/85 via-cyan-800/75 to-blue-900/80"
         icon={<MessageSquare className="w-10 h-10 text-white" />}
         badge="Mon–Sat · 9:00 AM – 5:00 PM"
       />
@@ -148,196 +149,114 @@ export default function Contact() {
       </section>
 
       {/* Contact Form and Map */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <section className="py-20 section-light relative overflow-hidden">
+        <div className="absolute inset-0 bg-dot-grid opacity-40" />
+        <div className="relative max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <Card>
-                <CardHeader>
-                  <CardTitle>Send Us a Message</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-6">
+            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <div className="card-base overflow-hidden">
+                <div className="bg-gradient-to-r from-teal-600 via-cyan-600 to-blue-600 p-5">
+                  <h3 className="text-white font-bold text-lg">Send Us a Message</h3>
+                  <p className="text-white/70 text-sm">We'll get back to you within 24 hours</p>
+                </div>
+                <form onSubmit={handleSubmit} className="p-6 space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="name">Full Name *</Label>
-                      <Input
-                        id="name"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="John Doe"
-                        required
-                      />
+                      <Label htmlFor="name" className="text-sm font-semibold text-gray-700 dark:text-gray-300">Full Name *</Label>
+                      <Input id="name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="Arjun Sharma" required className="mt-1 rounded-xl" />
                     </div>
-
                     <div>
-                      <Label htmlFor="email">Email Address *</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="john@example.com"
-                        required
-                      />
+                      <Label htmlFor="phone" className="text-sm font-semibold text-gray-700 dark:text-gray-300">Phone</Label>
+                      <Input id="phone" type="tel" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} placeholder="+91 98765 43210" className="mt-1 rounded-xl" />
                     </div>
-
-                    <div>
-                      <Label htmlFor="phone">Phone Number</Label>
-                      <Input
-                        id="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="+1 234 567 8900"
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="subject">Subject *</Label>
-                      <Input
-                        id="subject"
-                        value={formData.subject}
-                        onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                        placeholder="How can we help?"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="message">Message *</Label>
-                      <Textarea
-                        id="message"
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        placeholder="Tell us more about your inquiry..."
-                        rows={5}
-                        required
-                      />
-                    </div>
-
-                    <Button type="submit" className="w-full" size="lg">
-                      <Send className="w-4 h-4 mr-2" />
-                      Send Message
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
+                  </div>
+                  <div>
+                    <Label htmlFor="email" className="text-sm font-semibold text-gray-700 dark:text-gray-300">Email Address *</Label>
+                    <Input id="email" type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} placeholder="arjun@example.com" required className="mt-1 rounded-xl" />
+                  </div>
+                  <div>
+                    <Label htmlFor="subject" className="text-sm font-semibold text-gray-700 dark:text-gray-300">Subject *</Label>
+                    <Input id="subject" value={formData.subject} onChange={(e) => setFormData({ ...formData, subject: e.target.value })} placeholder="How can we help?" required className="mt-1 rounded-xl" />
+                  </div>
+                  <div>
+                    <Label htmlFor="message" className="text-sm font-semibold text-gray-700 dark:text-gray-300">Message *</Label>
+                    <Textarea id="message" value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} placeholder="Tell us more about your inquiry..." rows={4} required className="mt-1 rounded-xl" />
+                  </div>
+                  <Button type="submit" className="w-full bg-gradient-to-r from-teal-600 to-blue-600 hover:opacity-90 text-white rounded-xl font-bold py-3 flex items-center justify-center gap-2">
+                    <Send className="w-4 h-4" /> Send Message
+                  </Button>
+                </form>
+              </div>
             </motion.div>
 
-            {/* Map and Department Contacts */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="space-y-6"
-            >
-              {/* Interactive Map */}
-              <Card className="overflow-hidden">
-                <div className="h-64 bg-gray-200 dark:bg-gray-700 relative">
+            {/* Map + Dept Contacts */}
+            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-5">
+              <div className="card-base overflow-hidden">
+                <div className="h-56 relative">
                   <iframe
                     src="https://maps.google.com/maps?q=RNS+Institute+of+Technology,+Dr.+Vishnuvardhan+Road,+RR+Nagar,+Bengaluru,+Karnataka+560098&output=embed&z=16"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="RNS Institute of Technology, Bangalore"
+                    width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade" title="RNS Institute of Technology, Bangalore"
                   />
                 </div>
-              </Card>
+              </div>
 
-              {/* Department Contacts */}
-              <Card>
-                <CardHeader>
-                  <CardTitle>Department Contacts</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    {departments.map((dept, idx) => (
-                      <div
-                        key={idx}
-                        className="pb-4 border-b border-gray-200 dark:border-gray-700 last:border-0 last:pb-0"
-                      >
-                        <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
-                          {dept.name}
-                        </h4>
-                        <div className="space-y-1 text-sm">
-                          <a
-                            href={`mailto:${dept.email}`}
-                            className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition"
-                          >
-                            <Mail className="w-3 h-3" />
-                            {dept.email}
-                          </a>
-                          <a
-                            href={`tel:${dept.phone}`}
-                            className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition"
-                          >
-                            <Phone className="w-3 h-3" />
-                            {dept.phone}
-                          </a>
-                        </div>
+              <div className="card-base overflow-hidden">
+                <div className="bg-gradient-to-r from-teal-600 to-blue-600 px-5 py-3">
+                  <h4 className="text-white font-bold text-sm">Department Contacts</h4>
+                </div>
+                <div className="p-4 space-y-3">
+                  {departments.map((dept, idx) => (
+                    <div key={idx} className={`flex items-start gap-3 p-3 rounded-xl ${idx % 2 === 0 ? 'bg-teal-50 dark:bg-teal-950/30' : 'bg-blue-50 dark:bg-blue-950/30'}`}>
+                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${idx % 2 === 0 ? 'bg-teal-500' : 'bg-blue-500'}`}>
+                        <span className="text-white text-xs font-black">{dept.name.charAt(0)}</span>
                       </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+                      <div className="min-w-0">
+                        <p className="font-bold text-gray-900 dark:text-white text-xs mb-1">{dept.name}</p>
+                        <a href={`mailto:${dept.email}`} className="text-[11px] text-teal-600 dark:text-teal-400 hover:underline block truncate">{dept.email}</a>
+                        <a href={`tel:${dept.phone}`} className="text-[11px] text-gray-500 dark:text-gray-400">{dept.phone}</a>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
+      <section className="py-24 section-soft relative">
         <div className="max-w-4xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
-              Find answers to common questions about RNS Institute Of Technology
-            </p>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+            <span className="section-label">Got Questions?</span>
+            <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white mt-2 mb-3">Frequently Asked Questions</h2>
+            <p className="text-lg text-gray-500 dark:text-gray-400">Find answers to common questions about RNSIT</p>
           </motion.div>
 
           {faqs.map((section, idx) => (
-            <motion.div
-              key={section.category}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="mb-8"
-            >
-              <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
-                {section.category}
-              </h3>
-              <Card>
-                <CardContent className="p-6">
-                  <Accordion type="single" collapsible>
-                    {section.questions.map((item, qIdx) => (
-                      <AccordionItem key={qIdx} value={`${section.category}-${qIdx}`}>
-                        <AccordionTrigger className="text-left">
-                          {item.question}
-                        </AccordionTrigger>
-                        <AccordionContent className="text-gray-600 dark:text-gray-400">
-                          {item.answer}
-                        </AccordionContent>
-                      </AccordionItem>
-                    ))}
-                  </Accordion>
-                </CardContent>
-              </Card>
+            <motion.div key={section.category} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} className="mb-8">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-teal-500 to-blue-600 flex items-center justify-center">
+                  <span className="text-white text-xs font-black">{section.category.charAt(0)}</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white">{section.category}</h3>
+              </div>
+              <div className="card-base overflow-hidden">
+                <Accordion type="single" collapsible>
+                  {section.questions.map((item, qIdx) => (
+                    <AccordionItem key={qIdx} value={`${section.category}-${qIdx}`} className="border-blue-100 dark:border-blue-900/30 px-5">
+                      <AccordionTrigger className="text-left font-semibold text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400 text-sm">
+                        {item.question}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                        {item.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
             </motion.div>
           ))}
         </div>

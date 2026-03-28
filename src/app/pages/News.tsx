@@ -104,7 +104,8 @@ export default function News() {
       <PageHero
         title="News & Announcements"
         subtitle="Stay updated with the latest from our campus"
-        gradient="bg-gradient-to-r from-orange-700 via-red-600 to-rose-700"
+        image="https://images.unsplash.com/photo-1660485345088-c398363c1f45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080"
+        gradient="bg-gradient-to-r from-orange-900/85 via-red-800/75 to-rose-900/80"
         icon={<Calendar className="w-10 h-10 text-white" />}
         badge="Latest Updates · Events · Achievements"
       />

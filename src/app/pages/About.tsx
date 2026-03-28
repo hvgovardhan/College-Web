@@ -37,8 +37,8 @@ export default function About() {
       />
 
       {/* Vision & Mission */}
-      <section id="vision" className="py-24 bg-white dark:bg-gray-950 relative overflow-hidden">
-        <div className="absolute inset-0 bg-dot-grid opacity-40" />
+      <section id="vision" className="py-24 section-light relative overflow-hidden">
+        <div className="absolute inset-0 bg-dot-grid opacity-50" />
         <div className="relative max-w-7xl mx-auto px-4">
           <div className="text-center mb-14">
             <span className="section-label">Our Purpose</span>
@@ -46,30 +46,18 @@ export default function About() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
-              {
-                icon: Eye, gradient: 'from-blue-500 to-indigo-600', title: 'Our Vision',
-                text: 'To be a globally recognized institution that cultivates innovative engineers, groundbreaking researchers, and ethical leaders who address the world\'s most pressing technological challenges.',
-              },
-              {
-                icon: Target, gradient: 'from-emerald-500 to-teal-600', title: 'Our Mission',
-                text: 'To provide exceptional engineering education combining theoretical knowledge with practical experience, fostering critical thinking, creativity, and social responsibility in every student.',
-              },
+              { icon: Eye, gradient: 'from-blue-500 to-indigo-600', glow: 'icon-glow-blue', title: 'Our Vision',
+                text: 'To be a globally recognized institution that cultivates innovative engineers, groundbreaking researchers, and ethical leaders who address the world\'s most pressing technological challenges.' },
+              { icon: Target, gradient: 'from-emerald-500 to-teal-600', glow: 'icon-glow-green', title: 'Our Mission',
+                text: 'To provide exceptional engineering education combining theoretical knowledge with practical experience, fostering critical thinking, creativity, and social responsibility in every student.' },
             ].map((item, idx) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.15 }}
-                className="hover-lift"
-              >
-                <div className="relative overflow-hidden rounded-3xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 p-8 shadow-lg h-full">
-                  <div className={`absolute top-0 right-0 w-48 h-48 bg-gradient-to-br ${item.gradient} opacity-5 rounded-full translate-x-16 -translate-y-16`} />
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-6 shadow-lg`}>
+              <motion.div key={item.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.15 }}>
+                <div className="card-base card-hover card-accent-top p-8 h-full">
+                  <div className={`icon-box-lg bg-gradient-to-br ${item.gradient} ${item.glow} mb-6`}>
                     <item.icon className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">{item.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">{item.text}</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-lg leading-relaxed">{item.text}</p>
                 </div>
               </motion.div>
             ))}
@@ -78,7 +66,7 @@ export default function About() {
       </section>
 
       {/* Core Values */}
-      <section className="py-24 bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/50 dark:from-gray-900 dark:via-blue-950/20 dark:to-gray-900">
+      <section className="py-24 section-soft relative">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
             <span className="section-label">What Drives Us</span>
@@ -87,10 +75,9 @@ export default function About() {
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {values.map((value, idx) => (
-              <motion.div key={value.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} className="hover-lift">
-                <div className="relative overflow-hidden rounded-3xl bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-8 text-center shadow-lg h-full">
-                  <div className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${value.gradient}`} />
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${value.gradient} flex items-center justify-center mx-auto mb-5 shadow-lg`}>
+              <motion.div key={value.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }}>
+                <div className="card-base card-hover p-8 text-center h-full">
+                  <div className={`icon-box-lg bg-gradient-to-br ${value.gradient} mx-auto mb-5 ${idx === 0 ? 'icon-glow-blue' : idx === 1 ? 'icon-glow-purple' : 'icon-glow-green'}`}>
                     <value.icon className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">{value.title}</h3>
@@ -187,7 +174,7 @@ export default function About() {
       </section>
 
       {/* Leadership */}
-      <section id="leadership" className="py-24 bg-gradient-to-br from-slate-50 to-blue-50/40 dark:from-gray-900 dark:to-gray-900">
+      <section id="leadership" className="py-24 section-soft relative">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
             <span className="section-label">Meet the Team</span>
@@ -196,22 +183,19 @@ export default function About() {
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {leadership.map((leader, idx) => (
-              <motion.div key={leader.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} className="hover-lift">
-                <div className="rounded-3xl overflow-hidden bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 shadow-lg text-center group">
-                  {/* Avatar area */}
+              <motion.div key={leader.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }}>
+                <div className="card-base card-hover rounded-3xl overflow-hidden text-center group">
                   <div className={`relative h-44 bg-gradient-to-br ${leader.gradient} flex items-center justify-center overflow-hidden`}>
-                    {/* Decorative circles */}
                     <div className="absolute -top-6 -right-6 w-24 h-24 bg-white/10 rounded-full" />
                     <div className="absolute -bottom-4 -left-4 w-20 h-20 bg-black/10 rounded-full" />
-                    {/* Initials */}
                     <div className="relative z-10 w-24 h-24 rounded-2xl bg-white/20 backdrop-blur-sm border-2 border-white/30 flex items-center justify-center shadow-xl">
-                      <span className="text-white text-3xl font-extrabold tracking-tight">
-                        {leader.name.split(' ').filter(n => n.startsWith('Dr') || n.startsWith('Prof') ? false : true).slice(0, 2).map(n => n[0]).join('')}
+                      <span className="text-white text-3xl font-extrabold">
+                        {leader.name.split(' ').filter(n => !['Dr.','Prof.'].includes(n)).slice(0,2).map(n => n[0]).join('')}
                       </span>
                     </div>
                   </div>
                   <div className="p-5">
-                    <p className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-1">{leader.dept}</p>
+                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">{leader.dept}</p>
                     <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2">{leader.name}</h3>
                     <span className={`inline-block px-3 py-1 rounded-full bg-gradient-to-r ${leader.gradient} text-white text-xs font-semibold shadow-sm`}>{leader.role}</span>
                   </div>
@@ -224,6 +208,7 @@ export default function About() {
 
       {/* Stats */}
       <section className="py-20 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 relative overflow-hidden">
+        <div className="absolute inset-0 bg-dot-grid-dark opacity-30" />
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.15) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
         <div className="relative max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
@@ -234,8 +219,10 @@ export default function About() {
               { number: '20+', label: 'Departments' },
             ].map((stat, idx) => (
               <motion.div key={stat.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }}>
-                <div className="text-5xl font-extrabold mb-2">{stat.number}</div>
-                <div className="text-white/70 font-medium">{stat.label}</div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                  <div className="text-5xl font-extrabold mb-2">{stat.number}</div>
+                  <div className="text-white/70 font-medium text-sm">{stat.label}</div>
+                </div>
               </motion.div>
             ))}
           </div>
