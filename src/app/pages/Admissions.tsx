@@ -197,7 +197,7 @@ export default function Admissions() {
       </section>
 
       {/* Application Form */}
-      <section className="py-24 section-soft relative">
+      <section id="apply" className="py-24 section-soft relative">
         <div className="max-w-2xl mx-auto px-4">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
             <span className="section-label">Get Started</span>
@@ -265,8 +265,21 @@ export default function Admissions() {
             <h3 className="text-4xl font-extrabold mb-4">Download Our Prospectus</h3>
             <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">Get detailed information about programs, faculty, campus facilities, and the admission process</p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Button size="lg" className="bg-white text-green-700 hover:bg-gray-100 font-bold rounded-xl shadow-lg">Download PDF</Button>
-              <Button size="lg" variant="outline" className="border-white/60 text-white bg-white/10 hover:bg-white/20 rounded-xl font-bold">Request Physical Copy</Button>
+              <Button
+                size="lg"
+                className="bg-white text-green-700 hover:bg-gray-100 font-bold rounded-xl shadow-lg"
+                onClick={() => toast.success('📄 Brochure downloaded!', { description: 'RNSIT Prospectus 2026.pdf has been saved.' })}
+              >
+                Download PDF
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white/60 text-white bg-white/10 hover:bg-white/20 rounded-xl font-bold"
+                onClick={() => toast.info('📬 Request received!', { description: 'We\'ll mail the physical copy to your address within 5 working days.' })}
+              >
+                Request Physical Copy
+              </Button>
             </div>
           </motion.div>
         </div>

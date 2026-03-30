@@ -38,8 +38,33 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
+  const closeTimer = React.useRef<ReturnType<typeof setTimeout> | null>(null);
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
+
+  const openSubmenu = (name: string) => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setActiveSubmenu(name);
+  };
+
+  const closeSubmenu = () => {
+    closeTimer.current = setTimeout(() => setActiveSubmenu(null), 120);
+  };
+
+  // Scroll to hash section after navigation
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) {
+          const navHeight = 80;
+          const top = el.getBoundingClientRect().top + window.scrollY - navHeight;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      }, 150);
+    }
+  }, [location]);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -89,8 +114,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <div className="hidden lg:flex items-center gap-0.5">
               {navigationLinks.map((link) => (
                 <div key={link.path} className="relative"
-                  onMouseEnter={() => link.submenu && setActiveSubmenu(link.name)}
-                  onMouseLeave={() => setActiveSubmenu(null)}
+                  onMouseEnter={() => link.submenu && openSubmenu(link.name)}
+                  onMouseLeave={() => link.submenu && closeSubmenu()}
                 >
                   <Link to={link.path}
                     className={`px-3 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-1 ${
@@ -100,13 +125,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     }`}
                   >
                     {link.name}
-                    {link.submenu && <ChevronDown className="w-3 h-3 opacity-60" />}
+                    {link.submenu && <ChevronDown className={`w-3 h-3 opacity-60 transition-transform duration-200 ${activeSubmenu === link.name ? 'rotate-180' : ''}`} />}
                   </Link>
                   {link.submenu && activeSubmenu === link.name && (
                     <motion.div
                       initial={{ opacity: 0, y: -8, scale: 0.97 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
-                      className="absolute top-full left-0 mt-2 bg-white dark:bg-[#0f1829] rounded-2xl shadow-2xl shadow-blue-900/15 border border-blue-100 dark:border-blue-900/40 py-2 min-w-[200px]"
+                      onMouseEnter={() => openSubmenu(link.name)}
+                      onMouseLeave={() => closeSubmenu()}
+                      className="absolute top-full left-0 mt-1 bg-white dark:bg-[#0f1829] rounded-2xl shadow-2xl shadow-blue-900/15 border border-blue-100 dark:border-blue-900/40 py-2 min-w-[200px] z-50"
                     >
                       {link.submenu.map((item) => (
                         <Link key={item.path} to={item.path}

@@ -5,6 +5,8 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { PageHero } from '../components/PageHero';
+import { Link } from 'react-router';
+import { toast } from 'sonner';
 
 const deptGradients = [
   'from-blue-500 to-indigo-600',
@@ -404,8 +406,17 @@ export default function Academics() {
             <h2 className="text-4xl font-extrabold mb-4">Ready to Begin Your Academic Journey?</h2>
             <p className="text-xl text-white/80 mb-8">Join thousands of students pursuing excellence in engineering</p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 font-bold rounded-xl">Apply Now</Button>
-              <Button size="lg" variant="outline" className="border-white text-white bg-black/20 hover:bg-white hover:text-blue-900 rounded-xl">Download Brochure</Button>
+              <Link to="/admissions#apply">
+                <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 font-bold rounded-xl">Apply Now</Button>
+              </Link>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white text-white bg-black/20 hover:bg-white hover:text-blue-900 rounded-xl"
+                onClick={() => toast.success('📄 Brochure downloaded successfully!', { description: 'RNSIT Academic Brochure 2026.pdf' })}
+              >
+                Download Brochure
+              </Button>
             </div>
           </motion.div>
         </div>

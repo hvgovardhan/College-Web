@@ -19,6 +19,33 @@ const botResponses: Record<string, string> = {
   "default": "Thank you for your question! For detailed information, please contact our admissions office at admissions@rnsit.ac.in or call +91 80 2860 7999.",
 };
 
+// Animated cartoon robot SVG
+function RobotFace({ size = 28 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Antenna */}
+      <motion.line x1="20" y1="4" x2="20" y2="9" stroke="white" strokeWidth="2" strokeLinecap="round"
+        animate={{ scaleY: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }} />
+      <motion.circle cx="20" cy="3" r="2" fill="white"
+        animate={{ scale: [1, 1.4, 1], opacity: [1, 0.6, 1] }} transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }} />
+      {/* Head */}
+      <rect x="7" y="9" width="26" height="22" rx="6" fill="white" fillOpacity="0.25" stroke="white" strokeWidth="1.5" />
+      {/* Eyes */}
+      <motion.rect x="12" y="15" width="5" height="5" rx="1.5" fill="white"
+        animate={{ scaleY: [1, 0.15, 1] }} transition={{ repeat: Infinity, duration: 3, times: [0, 0.5, 0.55], ease: 'easeInOut', repeatDelay: 1 }} />
+      <motion.rect x="23" y="15" width="5" height="5" rx="1.5" fill="white"
+        animate={{ scaleY: [1, 0.15, 1] }} transition={{ repeat: Infinity, duration: 3, times: [0, 0.5, 0.55], ease: 'easeInOut', repeatDelay: 1 }} />
+      {/* Mouth */}
+      <motion.path d="M14 26 Q20 30 26 26" stroke="white" strokeWidth="1.8" strokeLinecap="round" fill="none"
+        animate={{ d: ['M14 26 Q20 30 26 26', 'M14 27 Q20 31 26 27', 'M14 26 Q20 30 26 26'] }}
+        transition={{ repeat: Infinity, duration: 2.5, ease: 'easeInOut' }} />
+      {/* Ear bolts */}
+      <circle cx="7" cy="20" r="2" fill="white" fillOpacity="0.5" />
+      <circle cx="33" cy="20" r="2" fill="white" fillOpacity="0.5" />
+    </svg>
+  );
+}
+
 // Particle spark component
 function Spark({ angle, delay }: { angle: number; delay: number }) {
   return (
@@ -111,11 +138,11 @@ export function Chatbot() {
               <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 80% 50%, white 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
               <div className="flex items-center gap-3 relative z-10">
                 <motion.div
-                  animate={{ rotate: [0, 10, -10, 0] }}
+                  animate={{ rotate: [0, 8, -8, 0] }}
                   transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
-                  className="w-9 h-9 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center border border-white/30"
+                  className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center border border-white/30"
                 >
-                  <Sparkles className="w-5 h-5 text-white" />
+                  <RobotFace size={28} />
                 </motion.div>
                 <div>
                   <h3 className="text-white font-bold text-sm">RNSIT Assistant</h3>
@@ -148,8 +175,8 @@ export function Chatbot() {
                   className={`flex ${msg.isBot ? 'justify-start' : 'justify-end'}`}
                 >
                   {msg.isBot && (
-                    <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mr-2 flex-shrink-0 mt-1">
-                      <Sparkles className="w-3 h-3 text-white" />
+                    <div className="w-7 h-7 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mr-2 flex-shrink-0 mt-1 shadow-md">
+                      <RobotFace size={18} />
                     </div>
                   )}
                   <div className={`max-w-[78%] px-3.5 py-2.5 rounded-2xl text-sm leading-relaxed ${
@@ -166,8 +193,8 @@ export function Chatbot() {
               <AnimatePresence>
                 {isTyping && (
                   <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center flex-shrink-0">
-                      <Sparkles className="w-3 h-3 text-white" />
+                    <div className="w-7 h-7 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center flex-shrink-0 shadow-md">
+                      <RobotFace size={18} />
                     </div>
                     <div className="bg-white dark:bg-[#1a2f50] border border-blue-100 dark:border-blue-900/30 rounded-2xl rounded-tl-sm px-4 py-3 flex gap-1.5 shadow-sm">
                       {[0, 0.2, 0.4].map((d, i) => (
@@ -258,14 +285,14 @@ export function Chatbot() {
             animate={{ x: ['-100%', '200%'] }}
             transition={{ repeat: Infinity, duration: 2.5, ease: 'easeInOut', repeatDelay: 1 }}
           />
-          <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait">
             {isOpen ? (
               <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
                 <X className="w-6 h-6" />
               </motion.div>
             ) : (
               <motion.div key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
-                <MessageCircle className="w-6 h-6" />
+                <RobotFace size={30} />
               </motion.div>
             )}
           </AnimatePresence>
